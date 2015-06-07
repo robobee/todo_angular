@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('frontendApp', [
+  .module('todo', [
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -18,8 +18,11 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        templateUrl: 'views/main.html'
+      })
+      .when('/todo', {
+        templateUrl: 'views/todo.html',
+        controller: 'TodoCtrl'
       })
       .otherwise({
         redirectTo: '/'
