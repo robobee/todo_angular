@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: <%= ENV["DEV_DB"] %>
+  username: <%= ENV["DEV_DB_USER"] %>
+  password: 
+
+test:
+  <<: *default
+  database: <%= ENV["TEST_DB"] %>
+  username: <%= ENV["DEV_DB_USER"] %>
+  password: 
+
+production:
+  <<: *default
+  database: <%= ENV["PROD_DB"] %>
+  username: <%= ENV["PROD_DB_USER"] %>
+  password: 
