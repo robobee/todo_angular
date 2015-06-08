@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
   namespace :api do
-    resources :tasks, only: [:index, :destroy, :create, :update]
+    resources :tasks, only: [:index, :destroy, :create, :update] do
+      member do
+        patch 'mark_as_finished'
+      end
+      collection do
+        post  'clear_finished'
+      end
+    end
   end
+
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

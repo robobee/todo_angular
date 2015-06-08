@@ -31,6 +31,20 @@ module Api
       end
     end
 
+    def mark_as_finished
+      task = Task.find(params[:id])
+      if task.update_attribute(:finished, true)
+        render json: task, status: 200, root: false
+      else
+        renser json: task.errors, status: 422
+      end
+    end
+
+    def clear_finished
+      Task.delete_all("finished = true")
+      head 204
+    end
+
     private
 
       def task_params

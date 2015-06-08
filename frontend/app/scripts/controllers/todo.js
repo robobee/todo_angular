@@ -8,6 +8,14 @@ angular.module('todo')
     $scope.tasks = Tasks.query();
 
     $scope.newTask = new Tasks;
+    $scope.newTask.finished = false;
+
+    $scope.finishedItems = function() {
+      var result = $scope.tasks.some(function(item, index, array) {
+        return item.finished === true;
+      });
+      return result;
+    };
 
     $scope.addTask = function() {
       if ($scope.newTodoItemForm.$valid) {
@@ -39,6 +47,18 @@ angular.module('todo')
 
     $scope.startEditing = function(task) {
       $scope.editTask = task;
+    };
+
+    $scope.markAsFinished = function(task) {
+      Tasks.update( { action: 'mark_as_finished' }, task );
+      task.finished = true;
+    };
+
+    $scope.clearFinished = function() {
+      Tasks.clearFinished( { action: 'clear_finished' }, null );
+      $scope.tasks = $scope.tasks.filter(function(task) {
+        return task.finished === false;
+      });
     };
 
   });
