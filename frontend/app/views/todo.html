@@ -4,7 +4,7 @@
 <form class="form-inline" role="form">
   <div class="input-group">
     <input type="text" class="form-control" id="new-todo-item" 
-      placeholder="New TODO item . . ." ng-model="todo.newTask">
+      placeholder="New TODO item . . ." ng-model="newTask.description">
     <span class="input-group-btn width-percentage">
       <button type="submit" class="btn btn-default" ng-click="addTask()">Create</button>
     </span>
@@ -12,11 +12,11 @@
 </form>
 
 <ul class="list-gorup todo-list-group">
-  <li class="list-group-item clearfix" ng-show="todo.newTask">
-    {{todo.newTask}}
+  <li class="list-group-item clearfix" ng-show="newTask.description">
+    {{newTask.description}}
   </li>
   <li class="list-group-item clearfix" ng-repeat="task in tasks">
-    {{task}}
+    {{task.description}}
     <span class="pull-right">
       <button type="button" class="btn btn-xs btn-success">
         <span class="glyphicon glyphicon-ok"></span>

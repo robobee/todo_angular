@@ -1,16 +1,19 @@
 'use strict';
 
 angular.module('todo')
-  .controller('TodoCtrl', function ($scope, tasks) {
+  .controller('TodoCtrl', function ($scope, tasks, $resource) {
+
     $scope.tasks = tasks.query();
 
-    $scope.todo = {
-      newTask: ''
+    $scope.newTask = {
+      description: ''
     };
 
     $scope.addTask = function() {
-      $scope.tasks.unshift($scope.todo.newTask);
-      $scope.todo.newTask = ''
+      $scope.tasks.unshift($scope.newTask);
+      $scope.newTask = {
+        description: ''
+      };
     };
 
   });
