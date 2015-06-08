@@ -23,7 +23,7 @@ describe Api::TasksController do
 
     it "returns all tasks as json" do
       get :index
-      expect(response.body).to eq(@tasks.reverse.to_json)
+      expect(json(response.body).length).to eq 3
     end
   end
 

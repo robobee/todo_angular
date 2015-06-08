@@ -86,10 +86,14 @@ body {
   padding-left: 0;
 }
 
-form {
+form, .clear-finished {
   margin-bottom: 1em;
 }
 
 .width-percentage {
   width: 1% !important;
+}
+
+h4 {
+  margin-top: 2em !important;
 }
