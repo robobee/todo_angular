@@ -81,3 +81,12 @@ body {
     border-bottom: 0;
   }
 }
+
+.todo-list-group {
+  padding-left: 0;
+  margin-top: 1em;
+}
+
+.width-percentage {
+  width: 1% !important;
+}
