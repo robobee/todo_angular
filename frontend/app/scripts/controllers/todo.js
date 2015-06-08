@@ -5,15 +5,20 @@ angular.module('todo')
 
     $scope.tasks = tasks.query();
 
-    $scope.newTask = {
-      description: ''
+    $scope.newTask = new tasks;
+    $scope.addTask = function() {
+      var task = $scope.newTask.$save();
+      task.then(function(response) {
+        console.log(response);
+        $scope.tasks.unshift(response);
+        $scope.newTask = new tasks;
+      });
     };
 
-    $scope.addTask = function() {
-      $scope.tasks.unshift($scope.newTask);
-      $scope.newTask = {
-        description: ''
-      };
+    $scope.deleteTask = function(task) {
+      task.$delete();
+      console.log($scope.tasks);
+      $scope.tasks.splice( $scope.tasks.indexOf(task), 1);
     };
 
   });
