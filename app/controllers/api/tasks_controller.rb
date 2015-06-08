@@ -8,14 +8,26 @@ module Api
 
     def destroy
       task = Task.find(params[:id])
-      task.delete
-      render json: {}, status: 200
+      task.destroy
+      head 204
     end
 
     def create
       task = Task.new(task_params)
       if task.save
+        render json: task, status: 201, root: false, 
+          location: api_task_url(task)
+      else
+        render json: task.errors, status: 422
+      end
+    end
+
+    def update
+      task = Task.find(params[:id])
+      if task.update(task_params)
         render json: task, status: 200, root: false
+      else
+        render json: task.errors, status: 422
       end
     end
 

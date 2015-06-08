@@ -1,5 +1,8 @@
 'use strict';
 
-angular.module('todo').factory('tasks', function($resource) {
-  return $resource('/api/tasks/:id', {id: '@id'});
+angular.module('todo').factory('Tasks', function($resource) {
+  return $resource('/api/tasks/:id', {id: '@id'},
+    {
+      'update': { method: 'PATCH' }
+    });
 });
