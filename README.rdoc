@@ -1,3 +1,5 @@
 == README
 
 Simple Angular and Rails App
+
+App at Heroku[https://dry-brushlands-8636.herokuapp.com/]
